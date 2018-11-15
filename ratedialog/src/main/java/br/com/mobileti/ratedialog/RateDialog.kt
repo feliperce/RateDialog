@@ -8,6 +8,7 @@ class RateDialog(var context: Context) {
     private var launchTimes: Int = 7
     private var days: Int = 7
     private var playstorePackage: String = ""
+    private var dialogOption: DialogOption? = null
 
     fun setLaunchTimes(launchTimes: Int): RateDialog {
         this.launchTimes = launchTimes
@@ -19,8 +20,8 @@ class RateDialog(var context: Context) {
         return this
     }
 
-    companion object {
-        private const val PREFERENCE = 0
+    fun setDialogOptions(dialogOption: DialogOption): RateDialog {
+        this.dialogOption = dialogOption
+        return this
     }
-
 }
