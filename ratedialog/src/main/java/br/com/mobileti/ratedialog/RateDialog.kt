@@ -8,7 +8,7 @@ class RateDialog(var context: Context) {
     private var launchTimes: Int = 7
     private var days: Int = 7
     private var playstorePackage: String = ""
-    private var dialogOption: DialogOption? = null
+    private var dialogOption: DialogOption = DialogOption()
 
     fun setLaunchTimes(launchTimes: Int): RateDialog {
         this.launchTimes = launchTimes
