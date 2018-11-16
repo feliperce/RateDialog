@@ -1,5 +1,7 @@
 package br.com.mobileti.ratedialog
 
+import android.content.Context
+
 data class DialogOption (
     var title: String = "",
     var msg: String = "",
