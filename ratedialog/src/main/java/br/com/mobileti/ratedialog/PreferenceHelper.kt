@@ -72,6 +72,14 @@ class PreferenceHelper(var context: Context) {
         }
     }
 
+    fun isDayToRateChanged(dayToRate: Int): Boolean {
+        return !getDaysToRate().equals(dayToRate)
+    }
+
+    fun isLaunchTimesChanged(launchTimes: Int): Boolean {
+        return !getLaunchTimes().equals(launchTimes)
+    }
+
     companion object {
         private const val PREF_NAME = "ratedialog"
         private const val PREF_KEY_LAUNCHED_TIMES = "launched_times"

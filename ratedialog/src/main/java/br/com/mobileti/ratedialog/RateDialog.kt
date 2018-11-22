@@ -29,6 +29,13 @@ class RateDialog(var context: Context) {
     }
 
     fun create() {
+        val pref = PreferenceHelper(context)
+
+        pref.apply {
+            if(isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
+                clearSharedPref()
+            }
+        }
 
         val dialog = AlertDialog.Builder(context)
             .setTitle(getStringIfNotEmpty(dialogOption.title, R.string.dialog_title))
