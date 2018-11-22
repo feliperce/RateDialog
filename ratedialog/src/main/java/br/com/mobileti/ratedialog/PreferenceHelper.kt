@@ -37,10 +37,47 @@ class PreferenceHelper(var context: Context) {
         return getSharedPreference().getLong(PREF_KEY_RATE_DAY, -1)
     }
 
+    fun setDaysToRate(daysToRate: Int) {
+        with(getSharedPreference().edit()) {
+            putInt(PREF_KEY_DAYS_TO_RATE, daysToRate)
+            apply()
+        }
+    }
+
+    fun getDaysToRate(): Int {
+        return getSharedPreference().getInt(PREF_KEY_DAYS_TO_RATE, -1)
+    }
+
+    fun setLaunchTimes(launchTimes: Int) {
+        with(getSharedPreference().edit()) {
+            putInt(PREF_KEY_LAUNCH_TIMES, launchTimes)
+            apply()
+        }
+    }
+
+    fun getLaunchTimes(): Int {
+        return getSharedPreference().getInt(PREF_KEY_LAUNCH_TIMES, -1)
+    }
+
+    /**
+     * Clear SharedPref except PreferenceHelper.PREF_KEY_CAN_SHOW_DIALOG
+     */
+    fun clearSharedPref() {
+        getSharedPreference().edit().apply {
+            remove(PREF_KEY_RATE_DAY)
+            remove(PREF_KEY_LAUNCHED_TIMES)
+            remove(PREF_KEY_DAYS_TO_RATE)
+            remove(PREF_KEY_LAUNCH_TIMES)
+            .apply()
+        }
+    }
+
     companion object {
         private const val PREF_NAME = "ratedialog"
         private const val PREF_KEY_LAUNCHED_TIMES = "launched_times"
         private const val PREF_KEY_RATE_DAY = "rate_day"
-        private const val PREF_CAN_SHOW_DIALOG = "show_dialog"
+        private const val PREF_KEY_DAYS_TO_RATE = "days_to_rate"
+        private const val PREF_KEY_LAUNCH_TIMES = "launch_times"
+        private const val PREF_KEY_CAN_SHOW_DIALOG = "show_dialog"
     }
 }
