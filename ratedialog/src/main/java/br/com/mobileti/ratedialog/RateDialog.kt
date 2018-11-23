@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.support.annotation.StringRes
+import br.com.mobileti.ratedialog.utils.getDatePlusDays
 
 class RateDialog(var context: Context) {
 
@@ -35,8 +36,18 @@ class RateDialog(var context: Context) {
             if(isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
                 clearSharedPref()
             }
+
+            val rateDay = getRateDay()
+            if(rateDay.equals(-1)) {
+                setRateDay(getDatePlusDays(days))
+            }
         }
 
+
+        showDialog()
+    }
+
+    private fun showDialog() {
         val dialog = AlertDialog.Builder(context)
             .setTitle(getStringIfNotEmpty(dialogOption.title, R.string.dialog_title))
             .setMessage(getStringIfNotEmpty(dialogOption.title, R.string.dialog_msg))
