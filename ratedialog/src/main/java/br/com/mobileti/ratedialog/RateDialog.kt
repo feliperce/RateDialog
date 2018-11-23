@@ -35,16 +35,29 @@ class RateDialog(var context: Context) {
         pref.apply {
             if(isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
                 clearSharedPref()
+                setParams(this)
+            } else {
+                setParams(this)
+
             }
 
-            val rateDay = getRateDay()
-            if(rateDay.equals(-1)) {
-                setRateDay(getDatePlusDays(days))
-            }
         }
 
-
         showDialog()
+    }
+
+    private fun setParams(pref: PreferenceHelper) {
+        pref.apply {
+            if(getRateDay().equals(-1)) {
+                setRateDay(getDatePlusDays(days))
+            }
+            if(getDaysToRate().equals(-1)) {
+                setDaysToRate(days)
+            }
+            if(getLaunchTimes().equals(-1)) {
+                setLaunchTimes(launchTimes)
+            }
+        }
     }
 
     private fun showDialog() {
