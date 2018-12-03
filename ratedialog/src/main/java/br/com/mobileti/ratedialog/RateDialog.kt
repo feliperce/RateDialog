@@ -35,18 +35,20 @@ class RateDialog(var context: Context) {
 
         pref.apply {
 
-            if(isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
-                clearSharedPref()
-            }
+            if(getCanShowDialog()) {
+                if (isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
+                    clearSharedPref()
+                }
 
-            setParams(this)
-            launchedTimes = getLaunchedTimes()
-            launchedTimes++
-            setLaunchedTimes(launchedTimes)
+                setParams(this)
+                launchedTimes = getLaunchedTimes()
+                launchedTimes++
+                setLaunchedTimes(launchedTimes)
 
-            if (isFutureDate(getRateDay())) {
-                if (launchedTimes >= getLaunchTimes()) {
-                    showDialog()
+                if (isFutureDate(getRateDay())) {
+                    if (launchedTimes >= getLaunchTimes()) {
+                        showDialog()
+                    }
                 }
             }
         }
@@ -89,12 +91,10 @@ class RateDialog(var context: Context) {
         }
         if (dialogOption.hasNegativeButton) {
             dialog.setNegativeButton(
-                getStringIfNotEmpty(dialogOption.negativeButtonText, R.string.dialog_negative),
-                DialogInterface.OnClickListener {
-                        dialogInterface, i ->
-
-                }
-            )
+                getStringIfNotEmpty(dialogOption.negativeButtonText, R.string.dialog_negative)
+            ) { dialogInterface, i ->
+                PreferenceHelper(context).setCanShowDialog(false)
+            }
         }
         dialog.show()
     }

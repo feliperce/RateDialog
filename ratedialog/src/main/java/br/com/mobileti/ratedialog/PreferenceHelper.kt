@@ -59,6 +59,17 @@ class PreferenceHelper(var context: Context) {
         return getSharedPreference().getInt(PREF_KEY_LAUNCH_TIMES, -1)
     }
 
+    fun setCanShowDialog(showDialog: Boolean) {
+        with(getSharedPreference().edit()) {
+            putBoolean(PREF_KEY_CAN_SHOW_DIALOG, showDialog)
+            apply()
+        }
+    }
+
+    fun getCanShowDialog(): Boolean {
+        return getSharedPreference().getBoolean(PREF_KEY_CAN_SHOW_DIALOG, true)
+    }
+
     /**
      * Clear SharedPref except PreferenceHelper.PREF_KEY_CAN_SHOW_DIALOG
      */
