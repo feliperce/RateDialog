@@ -1,7 +1,5 @@
 package br.com.mobileti.ratedialog.utils
 
-import android.text.format.DateUtils
-import java.time.LocalDateTime
 import java.util.*
 
 fun getDatePlusDays(days: Int): Long {
@@ -12,4 +10,15 @@ fun getDatePlusDays(days: Int): Long {
         date = time
     }
     return date.time
+}
+
+fun isFutureDate(date: Long): Boolean {
+    val futureCalendar = Calendar.getInstance().apply {
+        time = Date(date)
+    }
+
+    return Calendar.getInstance().let {
+        it.time = Date()
+        it.after(futureCalendar)
+    }
 }

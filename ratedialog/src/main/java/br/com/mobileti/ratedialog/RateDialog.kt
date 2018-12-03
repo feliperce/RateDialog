@@ -4,8 +4,8 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.support.annotation.StringRes
-import android.text.format.DateUtils
 import br.com.mobileti.ratedialog.utils.getDatePlusDays
+import br.com.mobileti.ratedialog.utils.isFutureDate
 
 class RateDialog(var context: Context) {
 
@@ -37,32 +37,30 @@ class RateDialog(var context: Context) {
 
             if(isDayToRateChanged(days) || isLaunchTimesChanged(launchTimes)) {
                 clearSharedPref()
-                setParams(this)
-            } else {
-                if (DateUtils.isToday(getRateDay())) {
-                    if (launchedTimes == getLaunchedTimes()) {
-                        //TODO continuar
-                    }
-                }
-                setParams(this)
-
             }
 
+            setParams(this)
+            launchedTimes = getLaunchedTimes()
+            launchedTimes++
+            setLaunchedTimes(launchedTimes)
 
+            if (isFutureDate(getRateDay())) {
+                if (launchedTimes >= getLaunchTimes()) {
+                    showDialog()
+                }
+            }
         }
-
-        showDialog()
     }
 
     private fun setParams(pref: PreferenceHelper) {
         pref.apply {
-            if(getRateDay().equals(-1)) {
+            if(getRateDay() == -1L) {
                 setRateDay(getDatePlusDays(days))
             }
-            if(getDaysToRate().equals(-1)) {
+            if(getDaysToRate() == -1) {
                 setDaysToRate(days)
             }
-            if(getLaunchTimes().equals(-1)) {
+            if(getLaunchTimes() == -1) {
                 setLaunchTimes(launchTimes)
             }
         }
