@@ -3,6 +3,8 @@ package br.com.mobileti.ratedialog
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.net.Uri
 import android.support.annotation.StringRes
 import br.com.mobileti.ratedialog.utils.getDatePlusDays
 import br.com.mobileti.ratedialog.utils.isFutureDate
@@ -74,20 +76,24 @@ class RateDialog(var context: Context) {
             .setMessage(getStringIfNotEmpty(dialogOption.title, R.string.dialog_msg))
             .setCancelable(dialogOption.cancelable)
             .setPositiveButton(
-                getStringIfNotEmpty(dialogOption.positiveButtonText, R.string.dialog_positive),
-                DialogInterface.OnClickListener {
-                        dialogInterface, i ->
-
-                }
-            )
+                getStringIfNotEmpty(dialogOption.positiveButtonText, R.string.dialog_positive)
+            ) { dialogInterface, i ->
+                PreferenceHelper(context).setCanShowDialog(false)
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$playstorePackage")
+                )
+                context.startActivity(intent)
+            }
         if (dialogOption.hasNeutralButton) {
             dialog.setNeutralButton(
-                getStringIfNotEmpty(dialogOption.neutralButtonText, R.string.dialog_neutral),
-                DialogInterface.OnClickListener {
-                        dialogInterface, i ->
-
+                getStringIfNotEmpty(dialogOption.neutralButtonText, R.string.dialog_neutral)
+            ) { dialogInterface, i ->
+                PreferenceHelper(context).apply {
+                    setCanShowDialog(true)
+                    clearSharedPref()
                 }
-            )
+            }
         }
         if (dialogOption.hasNegativeButton) {
             dialog.setNegativeButton(
