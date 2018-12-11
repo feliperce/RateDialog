@@ -17,21 +17,36 @@ class RateDialog(var context: Context) {
     private var playstorePackage: String = ""
     private var dialogOption: DialogOption = DialogOption()
 
+    /**
+     * Minimum amount of times the app needs to be initialized to display the dialog
+     * @param launchTimes How many times
+     */
     fun setLaunchTimes(launchTimes: Int): RateDialog {
         this.launchTimes = launchTimes
         return this
     }
 
+    /**
+     * Minimum amount of days to display the dialog
+     * @param days After how many days will it be shown
+     */
     fun setDays(days: Int): RateDialog {
         this.days = days
         return this
     }
 
+    /**
+     * Set optional dialog options
+     * @param dialogOption Dialog options
+     */
     fun setDialogOptions(dialogOption: DialogOption): RateDialog {
         this.dialogOption = dialogOption
         return this
     }
 
+    /**
+     * Create the dialog if the conditions are met
+     */
     fun create() {
         val pref = PreferenceHelper(context)
 
