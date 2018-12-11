@@ -47,6 +47,10 @@ class RateDialog(var context: Context) {
                 launchedTimes++
                 setLaunchedTimes(launchedTimes)
 
+                if (playstorePackage.isEmpty()) {
+                    playstorePackage = context.packageName
+                }
+
                 if (isFutureDate(getRateDay())) {
                     if (launchedTimes >= getLaunchTimes()) {
                         showDialog()
@@ -73,7 +77,7 @@ class RateDialog(var context: Context) {
     private fun showDialog() {
         val dialog = AlertDialog.Builder(context)
             .setTitle(getStringIfNotEmpty(dialogOption.title, R.string.dialog_title))
-            .setMessage(getStringIfNotEmpty(dialogOption.title, R.string.dialog_msg))
+            .setMessage(getStringIfNotEmpty(dialogOption.msg, R.string.dialog_msg))
             .setCancelable(dialogOption.cancelable)
             .setPositiveButton(
                 getStringIfNotEmpty(dialogOption.positiveButtonText, R.string.dialog_positive)
@@ -100,6 +104,14 @@ class RateDialog(var context: Context) {
                 getStringIfNotEmpty(dialogOption.negativeButtonText, R.string.dialog_negative)
             ) { dialogInterface, i ->
                 PreferenceHelper(context).setCanShowDialog(false)
+            }
+        }
+        if (dialogOption.cancelable) {
+            dialog.setOnCancelListener {
+                PreferenceHelper(context).apply {
+                    setCanShowDialog(true)
+                    clearSharedPref()
+                }
             }
         }
         dialog.show()
