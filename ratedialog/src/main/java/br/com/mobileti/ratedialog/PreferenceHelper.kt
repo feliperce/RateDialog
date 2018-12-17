@@ -84,11 +84,11 @@ class PreferenceHelper(var context: Context) {
     }
 
     fun isDayToRateChanged(dayToRate: Int): Boolean {
-        return !getDaysToRate().equals(dayToRate)
+        return getDaysToRate() != dayToRate
     }
 
     fun isLaunchTimesChanged(launchTimes: Int): Boolean {
-        return !getLaunchTimes().equals(launchTimes)
+        return getLaunchTimes() != launchTimes
     }
 
     companion object {

@@ -12,8 +12,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         RateDialog(this)
-            .setDays(4)
-            .setLaunchTimes(3)
+            .setDays(4) // Default is 7
+            .setLaunchTimes(3) // Default is 7
+            .setDialogOptions(DialogOption()) // Optional
             .create()
     }
 }

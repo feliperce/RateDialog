@@ -45,6 +45,15 @@ class RateDialog(var context: Context) {
     }
 
     /**
+     * Set the package name for open on Playstore
+     * @param packageName If empty package name will use the app default package name
+     */
+    fun setPlaystorePackageName(packageName: String): RateDialog {
+        this.playstorePackage = packageName
+        return this
+    }
+
+    /**
      * Create the dialog if the conditions are met
      */
     fun create() {
