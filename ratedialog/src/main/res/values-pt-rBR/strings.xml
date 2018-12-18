@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 - Felipe Rodrigues https://github.com/feliperce.
+  -->
+
+<resources>
+    <string name="dialog_title">Avalie este aplicativo</string>
+    <string name="dialog_msg">" Se você gostou deste aplicativo, por favor, tome um pouco de tempo para avaliá-lo"</string>
+    <string name="dialog_neutral">Lembre-me mais tarde</string>
+    <string name="dialog_positive">Avalie</string>
+    <string name="dialog_negative">Não, obrigado</string>
+</resources>
