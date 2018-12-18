@@ -22,7 +22,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```groovy
 dependencies {
-  implementation 'com.github.feliperce:RateDialog:Tag'
+  implementation 'com.github.feliperce:RateDialog:v1.0.2'
 }
 ```
 
