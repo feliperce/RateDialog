@@ -64,3 +64,4 @@ RateDialog(this)
 
 * Currently supported only English and Brazilian portuguese, please help me with new translations by opening new PR.
 * Support Android API 15+
+* Kotlin and Java support
