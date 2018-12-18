@@ -9,12 +9,6 @@ class PreferenceHelper(var context: Context) {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
-    private fun incrementLaunchedTimes() {
-        var launchedTimes = getLaunchedTimes()
-        launchedTimes++
-        setLaunchedTimes(launchedTimes)
-    }
-
     fun getLaunchedTimes(): Int {
         return getSharedPreference().getInt(PREF_KEY_LAUNCHED_TIMES, 0)
     }
