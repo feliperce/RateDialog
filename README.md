@@ -58,3 +58,9 @@ val option = DialogOption().apply {
 RateDialog(this)
 .setDialogOptions(option)
 .create()
+```
+
+# Language and Support
+
+* Currently supported only English and Brazilian portuguese, please help me with new translations by opening new PR.
+* Support Android API 15+
