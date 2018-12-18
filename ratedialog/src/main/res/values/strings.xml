@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">RateDialog</string>
-    
     <string name="dialog_title">Rate this app</string>
     <string name="dialog_msg">If you liked this app, please take a little time to rate it</string>
     <string name="dialog_neutral">Remind me later</string>

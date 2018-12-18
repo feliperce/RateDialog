@@ -1,8 +1,11 @@
+/*
+ * Copyright (c) 2018 - Felipe Rodrigues https://github.com/feliperce.
+ */
+
 package br.com.mobileti.ratedialog
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.support.annotation.StringRes
