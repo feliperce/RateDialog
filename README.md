@@ -1,4 +1,8 @@
 # RateDialog
+
+![MIT](https://img.shields.io/github/license/feliperce/RateDialog.svg)
+[![JitPack](https://jitpack.io/v/feliperce/RateDialog.svg)](https://jitpack.io/#feliperce/RateDialog)
+
 RateDialog is a Kotlin library to easily make "rate this app" dialog.
 
 ![RateDialog](https://i.imgur.com/bVgI3W9.png)
